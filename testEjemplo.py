@@ -1,26 +1,23 @@
 import time
 import unittest
-
-from faker import Faker
+from models import Customer
 from selenium import webdriver
 from selenium.common.exceptions import (NoAlertPresentException,
                                         NoSuchElementException)
 
+from faker import Faker
 
 class Testweb(unittest.TestCase):
     def setUp(self):
-        self.faker = Faker()
-        self.username = self.faker.name()
-        self.password = self.faker.password()
-        self.city = self.faker.city()
-        self.country = self.faker.country()
-        self.emailadress = self.faker.email()
-        self.credit_card = self.faker.credit_card_number()
-        self.year = self.faker.random_int(21, 26)
-        self.mount = self.faker.day_of_month()
-        self.nombre = self.username
-        self.contraseña = self.password
-        # se crea la nueva seccion de crhome
+        faker = Faker()
+        self.customer = Customer(username=faker.name(),
+                                 password=faker.password(),
+                                 city=faker.city(),
+                                 country=faker.country(),
+                                 email_address=faker.email(),
+                                 year=faker.random_int(21, 26),
+                                 credit_card=faker.credit_card_number(),
+                                 mouth=faker.random_int(1, 12))
         self.driver = webdriver.Chrome()
         self.verificationErrors = []
         self.accept_next_alert = True
@@ -29,26 +26,18 @@ class Testweb(unittest.TestCase):
         self.accept_next_alert = True
 
     def testhappy_test(self):
+
         self.register()
-        print("registra corrrectamente")
         self.login()
-        print("loguea correctamente")
         self.navigation()
-        print("nadavegamo")
         self.contact()
-        print("Contacto")
         self.about_us()
-        print("nostros")
         self.add_2_phones()
-        print("agregamos 2 telefonos")
         self.add_laptops()
-        print("agregamos 2 Laptos")
         self.add_monitors()
-        print("agregamos monitores")
         self.delete_products()
-        print("borramos productos")
         self.pay_itmes()
-        print("pagamos")
+        self.logout()
 
     def contact(self):
         self.driver.find_element_by_css_selector("a.nav-link").click()
@@ -56,9 +45,9 @@ class Testweb(unittest.TestCase):
         self.driver.find_element_by_link_text("Contact").click()
         time.sleep(1)
         self.driver.find_element_by_id("recipient-email").send_keys(
-            self.emailadress)
+            self.customer.email_address)
         self.driver.find_element_by_id("recipient-name").send_keys(
-            self.username)
+            self.customer.username)
         self.driver.find_element_by_id("message-text").send_keys(
             "espero les guste mi test automatizado")
         self.driver.find_element_by_css_selector(
@@ -113,10 +102,10 @@ class Testweb(unittest.TestCase):
         self.driver.find_element_by_id("signin2").click()
         time.sleep(2)
         self.driver.find_element_by_id("sign-username").send_keys(
-            self.username)
+            self.customer.username)
         time.sleep(2)
         self.driver.find_element_by_id("sign-password").send_keys(
-            self.password)
+            self.customer.password)
         time.sleep(5)
         self.driver.find_element_by_css_selector(
             "#signInModal > div.modal-dialog > div.modal-content > div.modal-footer > button.btn.btn-primary"
@@ -131,10 +120,11 @@ class Testweb(unittest.TestCase):
         self.driver.find_element_by_id("login2").click()
         time.sleep(2)
         self.driver.find_element_by_id("loginusername").clear()
-        self.driver.find_element_by_id("loginusername").send_keys(self.nombre)
+        self.driver.find_element_by_id("loginusername").send_keys(
+            self.customer.username)
         self.driver.find_element_by_id("loginpassword").clear()
         self.driver.find_element_by_id("loginpassword").send_keys(
-            self.contraseña)
+            self.customer.password)
         time.sleep(2)
         self.driver.find_element_by_css_selector(
             "#logInModal > div.modal-dialog > div.modal-content > div.modal-footer > button.btn.btn-primary"
@@ -209,17 +199,20 @@ class Testweb(unittest.TestCase):
         self.driver.find_element_by_css_selector(
             "button.btn.btn-success").click()
         time.sleep(2)
-        self.driver.find_element_by_id("name").send_keys(self.nombre)
+        self.driver.find_element_by_id("name").send_keys(
+            self.customer.username)
         time.sleep(1)
-        self.driver.find_element_by_id("country").send_keys(self.country)
+        self.driver.find_element_by_id("country").send_keys(
+            self.customer.country)
         time.sleep(1)
-        self.driver.find_element_by_id("city").send_keys(self.city)
+        self.driver.find_element_by_id("city").send_keys(self.customer.city)
         time.sleep(2)
-        self.driver.find_element_by_id("card").send_keys(self.credit_card)
+        self.driver.find_element_by_id("card").send_keys(
+            self.customer.credit_card)
         time.sleep(1)
-        self.driver.find_element_by_id("month").send_keys(self.mount)
+        self.driver.find_element_by_id("month").send_keys(self.customer.mouth)
         time.sleep(1)
-        self.driver.find_element_by_id("year").send_keys(self.year)
+        self.driver.find_element_by_id("year").send_keys(self.customer.year)
         time.sleep(2)
         self.driver.find_element_by_css_selector(
             "#orderModal > div.modal-dialog > div.modal-content > div.modal-footer > button.btn.btn-primary"
@@ -227,6 +220,10 @@ class Testweb(unittest.TestCase):
         time.sleep(2)
         self.driver.find_element_by_css_selector(
             "button.confirm.btn.btn-lg.btn-primary").click()
+        time.sleep(2)
+
+    def logout(self):
+        self.driver.find_element_by_id("logout2").click()
         time.sleep(2)
 
     def close_alert_and_get_its_text(self):
