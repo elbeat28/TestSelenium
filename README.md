@@ -21,25 +21,32 @@ pipenv install
 En terminan
 
 ```shell
-pipenv run python testEjemplo.py
+pipenv run python testEjemplo.py ("nombre del testEjemplo")
 ```
 
 
 # 3. ejecucion
 
 ```videos login_button
-
+```
 https://user-images.githubusercontent.com/25908164/156083238-698fcbf7-ecc4-4528-8497-03bb5455e0f1.mov
 
-```
-```videos login_Navegar
-https://user-images.githubusercontent.com/25908164/156098435-94e7766e-2c01-4138-8235-3f76e4ebc66a.mp4
-```
 
+```videos login_Navegar
 ```
+https://user-images.githubusercontent.com/25908164/156098435-94e7766e-2c01-4138-8235-3f76e4ebc66a.mp4
+
+
+
+```videos editar_pagina
+```
+https://user-images.githubusercontent.com/25908164/156218236-f4525992-dbb8-421f-ad7b-f0d342c8b038.mp4
+
+
+
 
 # 3. matriz
 matriz 
 ```
-https://docs.google.com/spreadsheets/d/1OXeoWIzDQTZdEItGYgYJmfVSD3jZ2QzLT6yiu82BUvM/edit?pli=1#gid=0
+https://docs.google.com/spreadsheets/d/1OXeoWIzDQTZdEItGYgYJmfVSD3jZ2QzLT6yiu82BUvM/edit?usp=sharing
 ```
