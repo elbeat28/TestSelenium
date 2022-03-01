@@ -34,6 +34,12 @@ https://user-images.githubusercontent.com/25908164/156083238-698fcbf7-ecc4-4528-
 ```
 ```videos login_Navegar
 https://user-images.githubusercontent.com/25908164/156098435-94e7766e-2c01-4138-8235-3f76e4ebc66a.mp4
+```
 
+```
 
+# 3. matriz
+matriz 
+```
+https://docs.google.com/spreadsheets/d/1OXeoWIzDQTZdEItGYgYJmfVSD3jZ2QzLT6yiu82BUvM/edit?pli=1#gid=0
 ```
