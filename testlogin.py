@@ -22,6 +22,7 @@ class Testweb(MABaseTest):
     def test_fogot_pass(self):
         self.driver.get(self.url)
         self.login.forgotpass()
+        
 
     def test_login_invalid(self):
         self.driver.get(self.url)

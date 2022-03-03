@@ -22,11 +22,9 @@ class Login():
     btn_publish = '[class="gh-btn gh-btn-black gh-publishmenu-button gh-btn-icon ember-view"]'
     btn_publish_modal = '[class="gh-btn gh-btn-black gh-btn-icon ember-view"]'
     btn_back_publish = '[class="ember-view gh-editor-back-button"]'
-
     cart_post1 = '//main[@id="site-main"]/div/div/article[2]/div/a'
     edit_page_btn = '[class="ember-view gh-btn gh-btn-outline mt2 mr2"]'
     movile_view = '[class="gh-btn gh-design-preview-mode gh-btn-group-selected"]'
-
     sd_brand= '[class="gh-nav-design-tab "] [class="gh-nav-button-expand"]'
     sd_description = '[id="site-description"]'
     sd_site_wide = 'div.gh-app nav.gh-nav.gh-nav-contextual section > div.gh-nav-top  button:nth-child(4)'
